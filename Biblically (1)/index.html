@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblically</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <header>
+    <h1>Biblically</h1>
+    <nav>
+      <button class="nav-item" data-section="bible">Bible</button>
+      <button class="nav-item" data-section="ai-chat">AI Chat</button>
+      <button class="nav-item" data-section="highlights">Highlights</button>
+      <button class="nav-item" data-section="reading-plans">Reading Plans</button>
+      <div class="spacer"></div>
+      <button id="theme-toggle" title="Toggle Theme"><i class="fas fa-adjust"></i></button>
+      <button id="audio-toggle" title="Toggle Audio"><i class="fas fa-headphones"></i></button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="bible" class="section active">
+      <div class="controls">
+        <label>
+          Translation
+          <select id="translation-select"></select>
+        </label>
+        <label>
+          Book
+          <select id="book-select"></select>
+        </label>
+        <label>
+          Chapter
+          <select id="chapter-select"></select>
+        </label>
+        <label>
+          Style
+          <select id="style-select">
+            <option value="modern">Modern</option>
+            <option value="literary">Literary Contemporary</option>
+            <option value="pastoral">Pastoral</option>
+            <option value="academic">Academic</option>
+            <option value="urban">Urban (big city)</option>
+            <option value="country">Country (rural)</option>
+          </select>
+        </label>
+        <div class="chapter-controls">
+          <div class="chapter-navigation">
+            <button id="prev-chapter" class="btn-secondary"><i class="fas fa-chevron-left"></i> Prev</button>
+            <button id="next-chapter" class="btn-secondary">Next <i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="chapter-actions">
+            <button id="chapter-audio-btn" class="btn-icon" title="Play chapter audio"><i class="fas fa-volume-up"></i></button>
+            <button id="chapter-chat-btn" class="btn-icon" title="Discuss this chapter with AI"><i class="fas fa-comments"></i></button>
+            <button id="chapter-voice-btn" class="btn-icon" title="Voice chat about this chapter"><i class="fas fa-microphone"></i></button>
+          </div>
+        </div>
+        <div class="search-bar">
+          <input id="search-input" type="text" placeholder="Search verses, keywords, or topics..." />
+          <div class="search-types">
+            <label><input type="radio" name="search-type" value="keyword" checked /> Keyword</label>
+            <label><input type="radio" name="search-type" value="topic" /> Topic</label>
+          </div>
+          <button id="search-btn" class="btn-secondary"><i class="fas fa-search"></i> Search</button>
+        </div>
+      </div>
+
+      <div id="chapter-title" class="chapter-title">Genesis 1 (KJV)</div>
+      <div id="verse-container" class="verses"></div>
+      <div id="search-results" class="list"></div>
+    </section>
+
+    <section id="ai-chat" class="section">
+      <div id="chat-messages" class="chat-messages"></div>
+      <div class="chat-input">
+        <input id="chat-input" type="text" placeholder="Ask about a verse or topic..." />
+        <button id="send-message">Send</button>
+        <button id="voice-chat-btn" class="btn-icon" title="Voice Chat"><i class="fas fa-microphone"></i></button>
+        <button id="speech-output-toggle" class="btn-icon" title="Toggle Speech Output"><i class="fas fa-volume-mute"></i></button>
+      </div>
+    </section>
+
+    <section id="highlights" class="section">
+      <h2>Highlights</h2>
+      <p>Your saved highlights are ordered by book, chapter, and verse.</p>
+      <div class="actions-row">
+        <button id="export-highlights" class="btn-secondary"><i class="fas fa-file-export"></i> Export</button>
+        <button id="clear-highlights" class="btn-secondary"><i class="fas fa-trash"></i> Clear All</button>
+      </div>
+      <div id="highlights-list" class="list"></div>
+    </section>
+
+    <section id="reading-plans" class="section">
+      <h2>Reading Plans</h2>
+      <p>Coming soon.</p>
+    </section>
+  </main>
+
+  <script src="js/data/bible-books.js"></script>
+  <script src="js/data/bible-text.js"></script>
+  <script src="js/data/lexicon.js"></script>
+  <script src="js/data/commentaries.js"></script>
+  <script src="js/data/extended-bible.js"></script>
+  <script src="js/agents/bible-agent.js"></script>
+  <script src="js/agents/search-agent.js"></script>
+  <script src="js/agents/commentary-agent.js"></script>
+  <script src="js/agents/lexicon-agent.js"></script>
+  <script src="js/agents/ai-agent.js"></script>
+  <script src="js/agents/audio-agent.js"></script>
+  <script src="js/core/verse-interaction.js"></script>
+  <script src="js/core/app.js"></script>
+
+  <!-- Verse Modal -->
+  <div id="verse-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div id="modal-verse-reference" class="modal-title">Reference</div>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="modal-verse-text" class="verse-text"></div>
+        <div class="modal-tabs">
+          <button class="tab-btn active" data-tab="commentary">Commentary</button>
+          <button class="tab-btn" data-tab="lexicon">Lexicon</button>
+          <button class="tab-btn" data-tab="cross-refs">Cross References</button>
+          <button class="tab-btn" data-tab="paraphrase">Paraphrase</button>
+        </div>
+        <div id="modal-tab-content" class="tab-content"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
