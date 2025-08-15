@@ -1,0 +1,136 @@
+/* Authentication and User Menu Styles */
+
+/* User Menu in Navbar */
+.user-menu { 
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+}
+
+.user-menu .user-info { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  padding: 0.25rem 0.5rem; 
+  border-radius: 999px; 
+  background: rgba(255,255,255,0.1); 
+}
+
+.user-menu .user-name { 
+  color: #fff; 
+  font-weight: 600; 
+}
+
+.user-avatar { 
+  width: 28px; 
+  height: 28px; 
+  border-radius: 50%; 
+  object-fit: cover; 
+  background: #fff; 
+  border: 2px solid rgba(255,255,255,0.3); 
+}
+
+.user-dropdown { 
+  display: inline-flex; 
+  gap: 0.25rem; 
+  margin-left: 0.25rem; 
+}
+
+.dropdown-item { 
+  background: rgba(255,255,255,0.15); 
+  color: #fff; 
+  border: none; 
+  padding: 0.4rem 0.6rem; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.35rem; 
+  font-size: 0.85rem;
+}
+
+.dropdown-item i { 
+  opacity: 0.9; 
+}
+
+.dropdown-item:hover { 
+  background: rgba(255,255,255,0.25); 
+}
+
+/* Auth Modal Layout */
+.auth-options { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.5rem; 
+}
+
+.auth-options input[type="email"],
+.auth-options input[type="tel"],
+.auth-options input[type="text"] { 
+  width: 100%; 
+  padding: 0.65rem 0.75rem; 
+  border: 1px solid var(--border, #e5e8eb); 
+  border-radius: 8px; 
+  font-size: 0.95rem;
+}
+
+.auth-options label { 
+  font-weight: 600; 
+  margin-top: 0.25rem; 
+  color: var(--text, #1c2833);
+}
+
+.hr-or { 
+  position: relative; 
+  text-align: center; 
+  margin: 0.75rem 0; 
+  color: var(--muted, #7f8c8d); 
+  font-size: 0.9rem; 
+}
+
+.hr-or::before, 
+.hr-or::after { 
+  content: ""; 
+  position: absolute; 
+  top: 50%; 
+  width: 42%; 
+  height: 1px; 
+  background: var(--border, #e5e8eb); 
+}
+
+.hr-or::before { 
+  left: 0; 
+}
+
+.hr-or::after { 
+  right: 0; 
+}
+
+.hr-or span { 
+  background: white; 
+  padding: 0 0.5rem; 
+}
+
+.fine-print { 
+  color: var(--muted, #7f8c8d); 
+  font-size: 0.85rem; 
+  margin-top: 0.5rem; 
+  line-height: 1.4;
+}
+
+/* Ensure auth modal uses a narrower width */
+#auth-modal .modal-content { 
+  width: min(420px, 95vw); 
+}
+
+/* Google signin button styling */
+#google-signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#google-signin i {
+  font-size: 1rem;
+}
